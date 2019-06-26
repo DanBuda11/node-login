@@ -1,0 +1,39 @@
+{
+  "name": "node-login",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=10.5.0"
+  },
+  "description": "Validated and authenticated user login backend with Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./start.js --ignore public/"
+  },
+  "keywords": [
+    "node",
+    "login",
+    "validation",
+    "authentication"
+  ],
+  "author": "Dan Buda",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^10.0.2",
+    "eslint": "^6.0.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2",
+    "pug": "^2.0.4",
+    "stylelint": "^10.1.0",
+    "stylelint-config-standard": "^18.3.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.1"
+  }
+}
