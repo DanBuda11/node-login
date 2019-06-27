@@ -1,33 +1,21 @@
 const express = require('express');
 
 const router = express.Router();
-// const indexController = require('../controllers/index');
+const userController = require('../controllers/userController');
+const authController = require('../controllers/authController');
 
-router.get('/', (req, res) => {
-  res.render('login');
-});
+router.get('/', authController.homePage);
 
-router.get('/home', (req, res) => {
-  res.render('home');
-});
+router.get('/login', userController.login);
 
-router.get('/forgotUser', (req, res) => {
-  res.render('forgotUser');
-});
+router.get('/register', userController.register);
 
-router.get('/forgotPassword', (req, res) => {
-  res.render('forgotPassword');
-});
+router.post('/register', userController.validateRegister);
 
-router.get('/settings', (req, res) => {
-  res.render('settings', {
-    username: 'Bob',
-    password: 'Sparky12',
-  });
-});
+router.get('/settings', authController.settings);
 
-router.get('/logout', (req, res) => {
-  res.render('logout');
-});
+router.get('/forgotuser', authController.forgotUser);
+
+router.get('/forgotpassword', authController.forgotPassword);
 
 module.exports = router;

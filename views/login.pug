@@ -1,4 +1,10 @@
 extends layout
 
 block content
-  p hi
+  p Login!
+  form.form(action="/login" method="POST")
+    label(for="email") Email Address
+    input(type="email" name="email")
+    label(for="password") Password
+    input(type="password" name="password")
+    input.button(type="submit" value="Log In")
