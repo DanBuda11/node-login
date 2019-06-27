@@ -5,5 +5,3 @@ Will need a 'forgot username', 'forgot password' with recovery email sent
 Will need client-side validation of username/password of some kind
 
 Redirect user to a 'logged in' page when logging in successful
-
-- This would eventually be a redirect to wherever they'd go when used in a real app
