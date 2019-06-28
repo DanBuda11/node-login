@@ -7,8 +7,12 @@ html(lang="en")
     title Node.js Authenticated Login
   body
     block header
-      button Login/Logout
-      button Settings
+      script.
+        function goToPage(url) {window.location.href = url;}
+      img(src="../public/images/logo.png" onclick="goToPage('/')")
+      button(onclick="goToPage('/register')") Register
+      button(onclick="goToPage('/settings')") Settings
+      button(onclick="goToPage('/login')") Login
     .content
       block content
     block footer
