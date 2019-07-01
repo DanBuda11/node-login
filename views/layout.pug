@@ -9,10 +9,11 @@ html(lang="en")
     block header
       script.
         function goToPage(url) {window.location.href = url;}
-      img(src="../public/images/logo.png" onclick="goToPage('/')")
+      img(src="/public/images/logo.png" onclick="goToPage('/')" style="height:2rem; cursor:pointer;")
       button(onclick="goToPage('/register')") Register
       button(onclick="goToPage('/settings')") Settings
       button(onclick="goToPage('/login')") Login
+      button() Logout
     .content
       block content
     block footer

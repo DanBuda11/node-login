@@ -1,21 +1,25 @@
 const express = require('express');
 
 const router = express.Router();
-const userController = require('../controllers/userController');
-const authController = require('../controllers/authController');
+const controllers = require('../controllers');
 
-router.get('/', authController.homePage);
+// Will need to check if user logged in/out to determine nav buttons shown (login, logout, register, settings) and whether home page will show something simple that changes depending on being logged in or out
+router.get('/', controllers.homePage);
 
-router.get('/login', userController.login);
+// Restrict acccess to login page if user is already logged in? Not necessarily from page navigation but if someone manually enters the url '/login'
+router.get('/login', controllers.loginForm);
 
-router.get('/register', userController.register);
+router.post('/login', controllers.login);
 
-// router.post('/register', userController.validateRegister);
+router.get('/register', controllers.registerForm);
 
-router.get('/settings', authController.settings);
+router.post('/register', controllers.register);
 
-router.get('/forgotuser', authController.forgotUser);
+router.get('/settings', controllers.isLoggedIn, controllers.settings);
 
-router.get('/forgotpassword', authController.forgotPassword);
+// I should do some kind of username recovery similar to password recovery
+// router.get('/forgotuser', controllers.forgotUser);
+
+router.get('/forgotpassword', controllers.forgotPassword);
 
 module.exports = router;
