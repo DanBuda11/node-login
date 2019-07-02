@@ -1,1 +1,2 @@
-require('../styles/main.scss');
+// require('../styles/main.scss');
+import '../styles/main.scss';

@@ -71,8 +71,9 @@ exports.deleteUser = (req, res) => {
   // Tasks to perform to permanently delete a user account
 };
 
-exports.isLoggedIn = (res, req) => {
+exports.isLoggedIn = (res, req, next) => {
   // This will need to run to confirm user is logged in before allowing access to settings page, forgot password page, reset password page, or home page that shows someone as logged in
+  next();
 };
 
 // This should end up being the validateRegister middleware run before and if successful, redirects to either the user settings page or the home page, with confirmation that user has been added to the database.

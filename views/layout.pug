@@ -5,15 +5,17 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title Node.js Authenticated Login
+    link(rel="stylesheet", href="/public/styles/main.css")
   body
     block header
       script.
         function goToPage(url) {window.location.href = url;}
-      img(src="/public/images/logo.png" onclick="goToPage('/')" style="height:2rem; cursor:pointer;")
-      button(onclick="goToPage('/register')") Register
-      button(onclick="goToPage('/settings')") Settings
-      button(onclick="goToPage('/login')") Login
-      button() Logout
+      .navbar
+        img(src="/public/images/logo.png" onclick="goToPage('/')" style="height:2rem; cursor:pointer;")
+        button#register(onclick="goToPage('/register')") Register
+        button(onclick="goToPage('/settings')") Settings
+        button(onclick="goToPage('/login')") Login
+        button() Logout
     .content
       block content
     block footer
