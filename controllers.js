@@ -1,5 +1,5 @@
 // const mongoose = require('mongoose');
-
+const passport = require('passport');
 // const User = mongoose.model('User');
 // const {
 //   check,
@@ -37,6 +37,8 @@ exports.login = (req, res) => {
 
 exports.logout = (req, res) => {
   // Logout logic goes here. Should redirect to '/'
+  req.logout();
+  res.redirect('/');
 };
 
 // Render the settings/account page

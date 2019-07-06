@@ -15,6 +15,8 @@ router.get('/register', controllers.registerForm);
 
 router.post('/register', controllers.register);
 
+router.get('/logout', controllers.logout);
+
 router.get('/settings', controllers.isLoggedIn, controllers.settings);
 
 // I should do some kind of username recovery similar to password recovery

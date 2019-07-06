@@ -8,15 +8,16 @@ html(lang="en")
     link(rel="stylesheet", href="/public/styles/main.css")
   body
     block header
-      script.
-        function goToPage(url) {window.location.href = url;}
       .navbar
-        img(src="/public/images/logo.png" onclick="goToPage('/')" style="height:2rem; cursor:pointer;")
-        button#register(onclick="goToPage('/register')") Register
-        button(onclick="goToPage('/settings')") Settings
-        button(onclick="goToPage('/login')") Login
-        button() Logout
+        a(href="/")
+          img(src="/public/images/logo.png" style="height:2rem; cursor:pointer;")
+        a#register(href="/register") Register
+        a(href="/settings") Settings
+        a(href="/login") Login
+        a#logout(href="/logout") Logout
     .content
       block content
     block footer
       footer A Dan Buda Joint
+    block scripts
+      script(src="/public/dist/bundle.js")
