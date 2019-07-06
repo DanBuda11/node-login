@@ -41,7 +41,7 @@ exports.logout = (req, res) => {
 
 // Render the settings/account page
 exports.settings = (req, res) => {
-  res.render('settings');
+  res.render('settings', { username: 'Bob', password: '123' });
 };
 
 exports.updatePassword = (req, res) => {
