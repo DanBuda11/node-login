@@ -9,6 +9,8 @@ const passport = require('passport');
 //   equals,
 // } = require('express-validator');
 
+const { check, validationResult } = require('express-validator');
+
 // Render the home page
 exports.homePage = (req, res) => {
   res.render('index');
@@ -19,10 +21,31 @@ exports.registerForm = (req, res) => {
   res.render('registerForm');
 };
 
-exports.register = (req, res, next) => {
-  // This needs to run after validation of registration input form and before the function that handles logging in; once user account created successfully, redirect back to home page with welcome message; failure to register should show some kind of error message
+exports.validateRegister = (req, res, next) => {
+  console.log(req.body.email);
+  check('name');
+  // console.log('req.body: ', req.body);
+  // check('email').isEmail();
+  // check('password').isLength({ min: 5 });
+  // const errors = validationResult(req);
+  // console.log('Errors?: ', errors);
   next();
 };
+
+exports.register = (req, res, next) => {
+  console.log('got to register');
+};
+
+// {
+//   check('email').isEmail();
+//   check('password').isLength({ min: 5 });
+//   // This needs to run after validation of registration input form and before the function that handles logging in; once user account created successfully, redirect back to home page with welcome message; failure to register should show some kind of error message
+//   const errors = validationResult(req);
+//   if (!errors.isEmpty()) {
+//     return res.status(422).json({ errors: errors.array() });
+//   }
+//   next();
+// };
 
 // Render the login page
 exports.loginForm = (req, res) => {
@@ -33,6 +56,7 @@ exports.loginForm = (req, res) => {
 exports.login = (req, res) => {
   // stuff goes here
   // Redirect back to home page with message that logging in was either successful or failed
+  res.redirect('/');
 };
 
 exports.logout = (req, res) => {

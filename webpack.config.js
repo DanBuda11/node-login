@@ -1,13 +1,20 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin');
+const webpack = require('webpack');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = (env, arg) => {
   const config = {
     entry: './public/js/index.js',
     output: {
       path: path.resolve(__dirname, 'public', 'dist'),
-      filename: 'bundle.js',
+      filename: 'fuckyou.js',
+    },
+    devServer: {
+      compress: true,
+      contentBase: 'public',
+      watchContentBase: true,
+      hot: true,
     },
     module: {
       rules: [
@@ -20,45 +27,40 @@ module.exports = (env, arg) => {
           test: /\.scss$/,
           use: [
             {
-              loader:
-                arg.mode === 'production'
-                  ? MiniCssExtractPlugin.loader
-                  : 'style-loader',
+              loader: 'style-loader',
             },
             {
               loader: 'css-loader',
-              options: {
-                sourceMap: arg.mode === 'development',
-                importLoaders: 2,
-              },
             },
-            { loader: 'postcss-loader' },
             {
               loader: 'sass-loader',
-              options: {
-                sourceMap: arg.mode === 'development',
-              },
             },
           ],
         },
       ],
     },
-    plugins: [new MiniCssExtractPlugin({})],
+    plugins: [
+      // new MiniCssExtractPlugin({
+      //   filename: '[name].css',
+      //   chunkFilename: '[id].css',
+      // }),
+      new webpack.HotModuleReplacementPlugin(),
+    ],
   };
 
-  if (arg.mode === 'production') {
-    config.optimization = {
-      minimizer: [
-        new UglifyjsWebpackPlugin({
-          uglifyOptions: {
-            output: {
-              comments: false,
-            },
-          },
-        }),
-      ],
-    };
-  }
+  // if (arg.mode === 'production') {
+  //   config.optimization = {
+  //     minimizer: [
+  //       new UglifyjsWebpackPlugin({
+  //         uglifyOptions: {
+  //           output: {
+  //             comments: false,
+  //           },
+  //         },
+  //       }),
+  //     ],
+  //   };
+  // }
 
   return config;
 };

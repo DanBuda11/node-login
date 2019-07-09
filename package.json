@@ -11,10 +11,11 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "node ./start.js",
-    "watch": "nodemon ./start.js --ignore public/",
-    "dev": "concurrently 'npm run watch' 'npm run assets' --mode none",
-    "assets": "webpack --mode none"
+    "start": "nodemon ./start.js",
+    "nodeDev": "nodemon ./start.js",
+    "webpackDev": "webpack-dev-server --mode development --hot --colors",
+    "build": "webpack --mode production",
+    "dev": "concurrently 'npm run nodeDev' 'npm run webpackDev'"
   },
   "keywords": [
     "node",
@@ -61,7 +62,11 @@
     "stylelint-config-standard": "^18.3.0",
     "uglifyjs-webpack-plugin": "^2.1.3",
     "webpack": "^4.35.2",
-    "webpack-cli": "^3.3.5"
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-middleware": "^3.7.0",
+    "webpack-dev-server": "^3.7.2",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
