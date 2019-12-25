@@ -18,11 +18,43 @@ const userSchema = new Schema({
   name: {
     type: String,
     trim: true,
+    validate(value) {
+      if (!validator.isLength(value, { min: 5 })) {
+        throw new Error('Name is too short');
+      }
+    },
     required: 'Please provide a name',
+  },
+  password: {
+    type: String,
+    required: 'Please provide a password',
+    trim: true,
+    minLength: 6,
+    validate(value) {
+      if (value.toLowerCase().includes('password')) {
+        throw new Error('Password cannot contain "password"');
+      }
+    },
   },
 });
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 userSchema.plugin(mongodbErrorHandler);
+
+// Temp code to test schema
+const User = new mongoose.model('User', userSchema);
+const user = User({
+  email: 'dan@dan.com',
+  name: 'Frankie',
+  password: 'passwrd',
+});
+user
+  .save()
+  .then(() => {
+    console.log(user);
+  })
+  .catch(error => {
+    console.log(error);
+  });
 
 module.exports = mongoose.model('User', userSchema);
